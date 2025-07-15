@@ -1,14 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from './Nav'
 import axios from 'axios'
 
 const Viewuser = () => {
+
+    const [loader, xloader] = useState(true)
+
     const [gitData, xgitData] = useState(
         []
     )
-    const fetchData=()=>{
-        axios.get().then().catch()
+    const fetchData = () => {
+        axios.get("https://api.github.com/users").then(
+            (res) => {
+                xloader(false)
+                xgitData(res.data)
+            }
+        ).catch(
+            () => {
+                alert("Something went wrong")
+            }
+        )
     }
+    useEffect(() => { fetchData() }, [])
     return (
         <div className='bg-primary-subtle p-4 rounded'>
             <Nav />
@@ -37,7 +50,10 @@ const Viewuser = () => {
                                             <th scope="col">User Type</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    {loader ? (<div class="d-flex align-items-center">
+                                        <strong role="status">Loading...</strong>
+                                        <div class="spinner-border ms-auto" aria-hidden="true"></div>
+                                    </div>) : (<tbody>
                                         {gitData.map(
                                             (value, index) => {
                                                 return (
@@ -57,14 +73,14 @@ const Viewuser = () => {
                                                         <td>{value.type}</td>
                                                         <td>{value.user_view_type}</td>
 
-
                                                     </tr>
                                                 )
 
                                             }
                                         )}
 
-                                    </tbody>
+                                    </tbody>)}
+                                    
                                 </table>
                             </div>
 
