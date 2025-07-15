@@ -23,7 +23,12 @@ const Viewuser = () => {
     }
     useEffect(() => { fetchData() }, [])
     return (
-        <div className='bg-primary-subtle p-4 rounded'>
+        <div style={{
+            backgroundImage: 'url("https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?cs=srgb&dl=pexels-jplenio-1103970.jpg&fm=jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            minHeight: '100vh'
+        }}>
             <Nav />
             <div className="container">
                 <div className="row">
@@ -31,8 +36,8 @@ const Viewuser = () => {
                         <div className="row g-3">
 
                             <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                                <table class="table">
-                                    <thead>
+                                <table className="table table-striped table-hover table-bordered bg-light text-dark shadow rounded-3">
+                                    <thead className="table-dark">
                                         <tr>
                                             <th scope="col">ID</th>
                                             <th scope="col">Node id</th>
@@ -60,7 +65,9 @@ const Viewuser = () => {
                                                     <tr>
                                                         <th scope="row">{value.id}</th>
                                                         <td>{value.node_id}</td>
-                                                        <td>{value.avatar_url}</td>
+                                                        <td>
+                                                            <img src={value.avatar_url} alt="avatar" width="50" className="rounded-circle" />
+                                                        </td>
                                                         <td>{value.url}</td>
                                                         <td>{value.html_url}</td>
                                                         <td>{value.followers_url}</td>
@@ -80,7 +87,7 @@ const Viewuser = () => {
                                         )}
 
                                     </tbody>)}
-                                    
+
                                 </table>
                             </div>
 

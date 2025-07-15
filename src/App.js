@@ -5,12 +5,14 @@ import Adduser from './components/Adduser';
 import Searchuser from './components/Searchuser';
 import Deleteuser from './components/Deleteuser';
 import Viewuser from './components/Viewuser';
+import Home from './components/Home';
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path='/' element={<Adduser/>}/>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/a' element={<Adduser/>}/>
       <Route path='/s' element={<Searchuser/>}/>
       <Route path='/d' element={<Deleteuser/>}/>
       <Route path='/v' element={<Viewuser/>}/>

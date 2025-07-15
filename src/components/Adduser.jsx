@@ -12,7 +12,12 @@ const Adduser = () => {
         console.log(input)
     }
     return (
-        <div className='bg-primary-subtle p-4 rounded'>
+        <div style={{
+        backgroundImage: 'url("https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?cs=srgb&dl=pexels-jplenio-1103970.jpg&fm=jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh'
+      }}>
             <Nav/>
             <div className="container">
                 <div className="row">
